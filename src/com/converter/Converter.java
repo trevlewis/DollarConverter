@@ -44,8 +44,9 @@ public class Converter {
 	 * Converts an numeric input into it's String representation.
 	 * Example: How you would write the amount out on a check.
 	 * 
-	 * @param double
-	 * @return String
+	 * @param numConvert - the amount as a double that will be converted
+	 * 			into it's String representation.
+	 * @return The String representation of the input.
 	 */
 	public String getConvertedString(double numConvert){
 		
@@ -82,6 +83,7 @@ public class Converter {
 			DecimalFormat dfPadding = new DecimalFormat("000000000");
 			startNum = dfPadding.format(Integer.parseInt(startNum));
 			
+			//Number cannot be handled at this time.
 			if(startNum.length() > 9){
 				throw new NumberFormatException();
 			}
@@ -108,6 +110,7 @@ public class Converter {
 			convertedStr += convert(hundreds);
 		}
 		
+		//Handle the decimal of the input
 		if(decimal != -1){
 			if(endNum.length() < 2){
 				convertedStr += " and " + endNum + "0/100 dollars";
@@ -129,8 +132,10 @@ public class Converter {
 	 * passed in to its String format. This is done
 	 * for Hundreds, Tens, and Ones.
 	 * 
-	 * @param int
-	 * @return String
+	 * @param num - a section of the input to be converted 
+	 * 			to it's String representation.
+	 * @return String representation of the section of the input
+	 * 			that was passed in.
 	 */
 	private String convert(int num){
 		String resultStr = "";
@@ -172,8 +177,9 @@ public class Converter {
 	 * Converts the First letter of the final String
 	 * to uppercase.
 	 * 
-	 * @param String
-	 * @return String
+	 * @param convertStr - a String representation of the input.
+	 * @return The String representation of the input with an uppercase letter
+	 * 			at the beginning of the string.
 	 */
 	private String getFinalConvert(String convertStr){
 		String firstLetter = String.valueOf(convertStr.charAt(0));
