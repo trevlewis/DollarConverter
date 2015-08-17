@@ -41,7 +41,7 @@ public class Converter {
 	}
 	
 	/**
-	 * Converts an numeric input into it's String equivalent.
+	 * Converts an numeric input into it's String representation.
 	 * Example: How you would write the amount out on a check.
 	 * 
 	 * @param double
@@ -69,14 +69,26 @@ public class Converter {
 		if(decimal != -1){
 			startNum = convertNum.substring(0, decimal);
 			endNum = convertNum.substring(decimal+1, convertNum.length());
+			if(endNum.length() > 2){
+				return "Sorry your decimal has too many digits. Please keep it to 2.";
+			}
 		}
 		else{
 			startNum = convertNum;
 		}
 		
-		//Pad the number with 0's so it is easier to parse.
-		DecimalFormat dfPadding = new DecimalFormat("000000000");
-		startNum = dfPadding.format(Integer.parseInt(startNum));
+		try{
+			//Pad the number with 0's so it is easier to parse.
+			DecimalFormat dfPadding = new DecimalFormat("000000000");
+			startNum = dfPadding.format(Integer.parseInt(startNum));
+			
+			if(startNum.length() > 9){
+				throw new NumberFormatException();
+			}
+		}
+		catch(NumberFormatException nfe){
+			return "Sorry your number too large. Please keep it less than 1 billion.";
+		}
 		
 		//Parse the Millions section of the Input String.
 		int millions = Integer.parseInt(startNum.substring(0, 3));
@@ -172,7 +184,7 @@ public class Converter {
 	public static void main(String[] args) {
 		Converter convert = new Converter();
 		
-		String result = convert.getConvertedString(99999999.99);
+		String result = convert.getConvertedString(123456789.99);
 
 		System.out.println("Result: " + result);
 	}

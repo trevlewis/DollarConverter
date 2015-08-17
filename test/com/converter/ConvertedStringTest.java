@@ -51,4 +51,21 @@ public class ConvertedStringTest {
 		assertEquals("Ninety-nine million nine hundred ninety-nine thousand nine hundred ninety-nine and 99/100 dollars", convertedStr);
 	}
 
+	@Test
+	public void test7() {
+		String convertedStr = converter.getConvertedString(1123456789.99);
+		assertEquals("Sorry your number too large. Please keep it less than 1 billion.", convertedStr);
+	}
+	
+	@Test
+	public void test8() {
+		String convertedStr = converter.getConvertedString(9123456789.99);
+		assertEquals("Sorry your number too large. Please keep it less than 1 billion.", convertedStr);
+	}
+	
+	@Test
+	public void test9() {
+		String convertedStr = converter.getConvertedString(123456789.994);
+		assertEquals("Sorry your decimal has too many digits. Please keep it to 2.", convertedStr);
+	}
 }
