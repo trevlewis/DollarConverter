@@ -61,8 +61,7 @@ public class Converter {
 		//Formats the double into an Integer so it doesn't 
 		//use scientific notation when converting to String.
         DecimalFormat dfDouble = new DecimalFormat("#");
-//        dfDouble.setMaximumFractionDigits(2);
-        dfDouble.setMaximumFractionDigits(2);
+        dfDouble.setMaximumFractionDigits(25);
 
 		String convertNum = String.valueOf(dfDouble.format(numConvert));
 		System.out.println("Input: " + convertNum);
@@ -71,9 +70,9 @@ public class Converter {
 		if(decimal != -1){
 			startNum = convertNum.substring(0, decimal);
 			endNum = convertNum.substring(decimal+1, convertNum.length());
-//			if(endNum.length() > 2){
-//				return "Sorry your decimal has too many digits. Please keep it to 2.";
-//			}
+			if(endNum.length() > 2){
+				return "Sorry your decimal has too many digits. Please keep it to 2.";
+			}
 		}
 		else{
 			startNum = convertNum;
