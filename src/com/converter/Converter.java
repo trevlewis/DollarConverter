@@ -160,7 +160,6 @@ public class Converter {
 				
 			onesNum = num % 10;
 			tensNum = (((num % 100) - onesNum) / 10);
-			hundredsNum = num / 100;
 
 			if (tensNum != 0){
 				resultStr += tens.get(tensNum);
