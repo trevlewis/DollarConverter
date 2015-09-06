@@ -61,7 +61,6 @@ public class Converter {
 		//Formats the double into an Integer so it doesn't 
 		//use scientific notation when converting to String.
         DecimalFormat dfDouble = new DecimalFormat("#");
-//        dfDouble.setMaximumFractionDigits(25);
         dfDouble.setMaximumFractionDigits(2);
 
 		String convertNum = String.valueOf(dfDouble.format(numConvert));
@@ -71,9 +70,6 @@ public class Converter {
 		if(decimal != -1){
 			startNum = convertNum.substring(0, decimal);
 			endNum = convertNum.substring(decimal+1, convertNum.length());
-//			if(endNum.length() > 2){
-//				return "Sorry your decimal has too many digits. Please keep it to 2.";
-//			}
 		}
 		else{
 			startNum = convertNum;
@@ -96,19 +92,19 @@ public class Converter {
 		//Parse the Millions section of the Input String.
 		int millions = Integer.parseInt(startNum.substring(0, 3));
 		if(millions != 0){
-			convertedStr += convert(millions) + " million ";
+			convertedStr += convertSection(millions) + " million ";
 		}
 		
 		//Parse the Thousands section of the Input String.
 		int thousands = Integer.parseInt(startNum.substring(3, 6));
 		if(thousands != 0){
-			convertedStr += convert(thousands) + " thousand ";
+			convertedStr += convertSection(thousands) + " thousand ";
 		}
 		
 		//Parse the Hundreds section of the Input String.
 		int hundreds = Integer.parseInt(startNum.substring(6, 9));
 		if(hundreds != 0){
-			convertedStr += convert(hundreds);
+			convertedStr += convertSection(hundreds);
 		}
 		
 		//Handle the decimal of the input
@@ -125,7 +121,7 @@ public class Converter {
 		}
 
 		
-		return getFinalConvert(convertedStr);
+		return getFinalFormat(convertedStr);
 	}	
 	
 	/**
@@ -138,7 +134,7 @@ public class Converter {
 	 * @return String representation of the section of the input
 	 * 			that was passed in.
 	 */
-	private String convert(int num){
+	private String convertSection(int num){
 		String resultStr = "";
 		int onesNum = 0;
 		int tensNum = 0;
@@ -181,7 +177,7 @@ public class Converter {
 	 * @return The String representation of the input with an uppercase letter
 	 * 			at the beginning of the string.
 	 */
-	private String getFinalConvert(String convertStr){
+	private String getFinalFormat(String convertStr){
 		String firstLetter = String.valueOf(convertStr.charAt(0));
 		
 		return convertStr.replaceFirst(firstLetter, firstLetter.toUpperCase());

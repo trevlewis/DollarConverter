@@ -70,11 +70,5 @@ public class ConvertedStringTest {
 		System.out.println("Result: " + convertedStr);
 		assertEquals("Sorry your number too large. Please keep it less than 1 billion.", convertedStr);
 	}
-	
-//	@Test
-//	public void test9() {
-//		String convertedStr = converter.getConvertedString(123456789.994);
-//		System.out.println("Result: " + convertedStr);
-//		assertEquals("Sorry your decimal has too many digits. Please keep it to 2.", convertedStr);
-//	}
+
 }
