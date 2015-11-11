@@ -121,7 +121,7 @@ public class Converter {
 		}
 
 		
-		return getFinalFormat(convertedStr);
+		return capitalizeFirstLetter(convertedStr);
 	}	
 	
 	/**
@@ -177,7 +177,7 @@ public class Converter {
 	 * @return The String representation of the input with an uppercase letter
 	 * 			at the beginning of the string.
 	 */
-	private String getFinalFormat(String convertStr){
+	private String capitalizeFirstLetter(String convertStr){
 		String firstLetter = String.valueOf(convertStr.charAt(0));
 		
 		return convertStr.replaceFirst(firstLetter, firstLetter.toUpperCase());
